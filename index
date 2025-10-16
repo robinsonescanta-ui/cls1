@@ -1,0 +1,26 @@
+<html>
+  <html lang="es">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Hacerca de la  tecnología</title>
+      <link rel="stylesheet" href="style.css" />
+      <link rel="shortcut icon" type="image/x icon" href="icono.ico">
+
+    </head>
+    <body>
+      <div class="space-background">
+        <nav class="navbar">
+          <ul>
+            <li><a href="La tecnologia.html">Inicio</a></li>
+            <li><a href="AcerTecnologia.html">La Tecnologia</a></li>
+            <li><a href="Cosas de la Tecnologia.html">Lo importante</a></li>
+            <li><a href="Inventos.html">Inventos mas importantes</a></li>
+          </ul>
+        </nav>
+      </div>
+    
+      <script src="script.js"></script>
+    </body>
+    </html>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Los inventos tecnologicos</title>
+    <link rel="stylesheet" href="Fondo5.css">
+</head>
+<body>
+    <div class="contenido">
+        <h2>Los inventos tecnológicos</h2>
+
+        <div class="galeria-horizontal">
+            <img src="17.gif" alt="17" height="200" width="200" style="display: none;">
+            <img src="14.gif" alt="14" height="200" width="200" style="display: none;">
+            <img src="inventos.png" alt="inventos" height="200" width="200" style="display: none;">
+            <img src="tec.jpg" alt="tec" height="200" width="200" style="display: none;">
+            <div id="mensajeR" class="mensaje-r">💡 Presiona la tecla R para ver cada una de las imágenes</div>
+        </div>
+
+        <button onclick="leerTexto()" id="botonLectura"><i class="fas fa-volume-up"></i> Escuchar lectura</button>
+        <div id="indicadorLectura">🔊 Leyendo...</div>
+
+        <div class="texto-visible" id="textoContenido">
+            Los inventos tecnológicos más importantes son aquellos que han tenido un impacto profundo en la sociedad, la economía y la forma en que vivimos. Algunos de los más destacados incluyen la imprenta, la máquina de vapor, la electricidad, el teléfono, el avión, el ordenador, Internet y la inteligencia artificial.
+
+            Estos inventos no solo han transformado la forma en que nos comunicamos, trabajamos y nos desplazamos, sino que también han impulsado el progreso en diversos campos, como la medicina, la industria y la ciencia.
+
+            A continuación, se detallan algunos de estos inventos clave:
+
+            Imprenta:
+            La imprenta, inventada por Johannes Gutenberg en el siglo XV, permitió la producción masiva de libros y la difusión del conocimiento a un público más amplio, lo que a su vez impulsó la alfabetización y la revolución intelectual.
+
+            Máquina de vapor:
+            La máquina de vapor, desarrollada por James Watt en el siglo XVIII, revolucionó la industria y el transporte, dando origen a la Revolución Industrial y sentando las bases para la producción en masa y el desarrollo de nuevas tecnologías.
+
+            Electricidad:
+            El descubrimiento y la aplicación de la electricidad, especialmente con la invención de la bombilla por Thomas Edison, transformaron la vida cotidiana y permitieron el desarrollo de nuevas tecnologías, como la iluminación, la comunicación y la automatización.
+
+            Teléfono:
+            El teléfono, inventado por Alexander Graham Bell en 1876, revolucionó la comunicación, permitiendo la transmisión de voz a distancia y conectando a personas de forma instantánea.
+
+            Avión:
+            Los hermanos Wright lograron el primer vuelo controlado y motorizado en 1903, lo que abrió nuevas posibilidades en el transporte y la movilidad, conectando lugares distantes de manera más rápida y eficiente.
+
+            Ordenador:
+            El desarrollo de los ordenadores, desde las primeras máquinas hasta los ordenadores personales, ha transformado la forma en que trabajamos, estudiamos y nos entretenemos, permitiendo el procesamiento de grandes cantidades de información y la automatización de tareas complejas.
+
+            Internet:
+            Internet, una red global de ordenadores, ha revolucionado la comunicación, el acceso a la información y el comercio, conectando a personas de todo el mundo y facilitando la colaboración y el intercambio de conocimientos.
+
+            Inteligencia Artificial:
+            La inteligencia artificial, con sus avances en aprendizaje automático y redes neuronales, está transformando diversos sectores, desde la medicina hasta la industria, con aplicaciones que van desde la automatización de tareas hasta la creación de sistemas inteligentes.
+
+            Estos son solo algunos ejemplos de los inventos tecnológicos más importantes que han moldeado el mundo en el que vivimos. Cada uno de ellos ha contribuido a un progreso significativo, y la continua innovación en tecnología promete seguir transformando nuestras vidas en el futuro.
+        </div>
+
+        <a href="https://youtu.be/NEzvnGbfljs" target="_blank">Ver video de la evolución de la tecnología</a>
+
+        <div class="boton-regresar">
+            <a href="Barra de menu-1.html" title="Volver al menú">
+                <img src="casa.jpg" alt="Botón Regresar" height="50" width="50">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const imagenes = document.querySelectorAll('.contenido img');
+        let indice = 0;
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key.toLowerCase() === 'r') {
+                if (indice < imagenes.length) {
+                    imagenes[indice].style.display = 'inline';
+                    indice++;
+                }
+            }
+        });
+
+        let leyendo = false;
+        let voz;
+
+        function leerTexto() {
+            const texto = document.getElementById("textoContenido").innerText;
+            const boton = document.getElementById("botonLectura");
+            const indicador = document.getElementById("indicadorLectura");
+
+            if (!leyendo) {
+                voz = new SpeechSynthesisUtterance(texto);
+                voz.lang = 'es-ES';
+
+                voz.onstart = () => {
+                    indicador.style.display = "block";
+                };
+
+                voz.onend = () => {
+                    leyendo = false;
+                    boton.textContent = "Escuchar lectura";
+                    indicador.style.display = "none";
+                };
+
+                speechSynthesis.speak(voz);
+                leyendo = true;
+                boton.textContent = "Detener lectura";
+            } else {
+                speechSynthesis.cancel();
+                leyendo = false;
+                boton.textContent = "Escuchar lectura";
+                indicador.style.display = "none";
+            }
+        }
+
+        // Efecto de máquina de escribir
+        window.onload = function() {
+            const texto = document.getElementById("textoContenido");
+            const original = texto.innerHTML;
+            texto.innerHTML = "";
+            let i = 0;
+            const escribir = () => {
+                if (i < original.length) {
+                    texto.innerHTML += original.charAt(i);
+                    i++;
+                    setTimeout(escribir, 8);
+                }
+            };
+            escribir();
+        };
+    </script>
+</body>
+</html>

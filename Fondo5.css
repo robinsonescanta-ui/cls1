@@ -1,0 +1,149 @@
+.galeria-horizontal {
+    display: flex;
+    justify-content: flex-end; /* Alinea hacia la derecha */
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.galeria-horizontal img {
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s;
+}
+
+.galeria-horizontal img:hover {
+    transform: scale(1.05);
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('cuadrados.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.contenido {
+    background-color: rgba(0, 0, 0, 0.865); 
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    color: white; /* Texto en blanco */
+}
+
+h2 {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    animation: girarColor 5s linear 1; /* Solo una vez */
+    animation-fill-mode: forwards;    /* Mantiene la rotación final */
+    color: #ff0055;
+}
+
+/* Animación para girar y cambiar color */
+@keyframes girarColor {
+    0% {
+        transform: rotate(0deg);
+        color: #ff0055;
+    }
+    25% {
+        transform: rotate(90deg);
+        color: #00ccff;
+    }
+    50% {
+        transform: rotate(180deg);
+        color: #33ff33;
+    }
+    75% {
+        transform: rotate(270deg);
+        color: #ffff00;
+    }
+    100% {
+        transform: rotate(360deg);
+        color: #ff0055;
+    }
+}
+
+#botonLectura {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#botonLectura:hover {
+    background-color: #004999;
+}
+
+img {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+}
+/* Mensajes */
+.mensaje-r {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 255, 255, 0.15);
+    color: #00ffff;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 15px 20px;
+    border: 1px solid #00e6e6;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    animation: fadeOut 7s forwards;
+}
+
+/* Animación para ocultarlo */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+.texto-visible {
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #00ffff;          /* Azul neón */
+    background-color: #001f2d; /* Fondo oscuro azulado */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow:
+      0 0 5px #00ffff,
+      0 0 10px #00ffff,
+      0 0 20px #00ffff;
+    white-space: pre-wrap;  /* Para respetar saltos de línea */
+    text-shadow:
+      0 0 5px #00ffff,
+      0 0 10px #00ffff;
+    margin-bottom: 20px;
+}
+
+/* Para los títulos dentro del texto, puedes usar strong para destacarlos */
+.texto-visible strong {
+    color: #0ff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Puedes añadir separación para los puntos claves */
+.texto-visible p {
+    margin-bottom: 1em;
+}
+

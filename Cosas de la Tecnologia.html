@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lo más importante de la Tecnología</title>
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .contenido {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,255,255,0.4);
+            max-width: 850px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #00e6e6;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0,255,255,0.2);
+        }
+
+        .texto-visible {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        button {
+            background-color: #00bcd4;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+        }
+
+        #indicadorLectura {
+            margin-top: 10px;
+            color: cyan;
+            display: none;
+        }
+
+        .boton-regresar img {
+            margin-top: 25px;
+            height: 50px;
+            width: 50px;
+            filter: drop-shadow(0 0 5px cyan);
+        }
+
+        @media (max-width: 600px) {
+            .contenido {
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <h2>Lo más importante</h2>
+
+        <img src="Nanobot.jpg" alt="Computadora">
+
+        <button onclick="leerTexto()" id="botonLectura"><i class="fas fa-volume-up"></i> Escuchar lectura</button>
+        <div id="indicadorLectura">🔊 Leyendo...</div>
+
+        <div class="texto-visible" id="textoContenido">
+          
+                Lo más importante que tiene la tecnología es su capacidad para resolver problemas y mejorar la vida de las personas, ya sea a través de la eficiencia en tareas cotidianas, el acceso a la información o la creación de nuevas oportunidades.
+                La tecnología también fomenta la innovación, la comunicación y el aprendizaje, transformando la forma en que interactuamos con el mundo.
+          
+                En detalle, la tecnología nos ofrece:
+                
+                    Mayor eficiencia y productividad: permite realizar tareas de manera más rápida y con menos esfuerzo, tanto en el ámbito personal como profesional.
+                    Acceso a información y conocimiento: facilita la búsqueda y el aprendizaje de nuevos conocimientos a través de internet y otras plataformas digitales.
+                    Conexión y comunicación: acorta distancias y permite la comunicación instantánea con personas de todo el mundo.
+                    Innovación y desarrollo: impulsa avances en medicina, ciencia, industria, etc.
+                    Nuevas oportunidades: abre puertas a nuevos empleos, negocios y entretenimiento.
+            
+                En resumen, la tecnología es una herramienta poderosa que, si se utiliza de manera responsable, puede contribuir significativamente al progreso y bienestar de la sociedad.
+            
+        </div>
+
+        <div class="boton-regresar">
+            <a href="Barra de menu-1.html" title="Volver al menú">
+                <img src="Home.jpg" alt="Botón Regresar">
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts JS -->
+    <script>
+        let leyendo = false;
+        let voz;
+
+        function leerTexto() {
+            const texto = document.getElementById("textoContenido").innerText;
+            const boton = document.getElementById("botonLectura");
+            const indicador = document.getElementById("indicadorLectura");
+
+            if (!leyendo) {
+                voz = new SpeechSynthesisUtterance(texto);
+                voz.lang = 'es-ES';
+
+                voz.onstart = () => {
+                    indicador.style.display = "block";
+                };
+
+                voz.onend = () => {
+                    leyendo = false;
+                    boton.textContent = "Escuchar lectura";
+                    indicador.style.display = "none";
+                };
+
+                speechSynthesis.speak(voz);
+                leyendo = true;
+                boton.textContent = "Detener lectura";
+            } else {
+                speechSynthesis.cancel();
+                leyendo = false;
+                boton.textContent = "Escuchar lectura";
+                indicador.style.display = "none";
+            }
+        }
+
+        // Efecto de máquina de escribir
+        window.onload = function() {
+            const texto = document.getElementById("textoContenido");
+            const original = texto.innerHTML;
+            texto.innerHTML = "";
+            let i = 0;
+            const escribir = () => {
+                if (i < original.length) {
+                    texto.innerHTML += original.charAt(i);
+                    i++;
+                    setTimeout(escribir, 8);
+                }
+            };
+            escribir();
+        }
+    </script>
+</body>
+</html>

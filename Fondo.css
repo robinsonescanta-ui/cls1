@@ -1,0 +1,66 @@
+body {
+    background-image: url('tecnologia.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+}
+
+
+h2 {
+    text-align: center;
+    color: #00ffff;
+}
+
+
+.contenido {
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Imagen principal */
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Botón de regresar */
+.boton-regresar {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.boton-regresar img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.boton-regresar img:hover {
+    transform: scale(1.2);
+}
+h2 {
+    animation: moverTitulo 3s ease-in-out infinite alternate;
+    text-align: center;
+    color: #00ffff;
+}
+
+@keyframes moverTitulo {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(50px);
+    }
+}
